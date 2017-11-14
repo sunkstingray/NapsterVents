@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NapsterVents</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Raleway|News+Cycle:400,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/mediaelementplayer.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="page-header">
+					<h1>NapsterVents <small>Artist information and events all on one page</small></h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<span id="search-label">Search artist name and zip code </span>  
+					<input type="text" class="form-control" id="artist-name" placeholder="Artist Name">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="zip-code" placeholder="Zip Code">
+				</div>
+			<button class="btn btn-primary" type="submit" id="nav-submit">Search</button>
+			</form>
+
+			
+			<form class="navbar-form navbar-right" role="log-in">
+				<div class="form-group">
+					<input type="text" class="form-control" id="username" placeholder="Username" type="hidden">
+				</div>
+
+				<button type="submit" class="btn btn-info" id="user-submit">Log-in</button>
+				<button type="button" class="btn btn-warning" id="sign-up-modal" data-toggle="modal" data-target="#signupModal">Sign-up</button>
+
+				<span id="logged-in" style="display:none;">Welcome! You are logged in as: </span>
+				<button type="submit" class="btn btn-default" id="user-logout" style="display:none;">Log-out</button>
+			</form>
+
+
+		</div>
+	</nav>
+
+	<div id="signupModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Enter a new username here</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control" id="newUsername" placeholder="New Username">
+						<br>
+						<button type="submit" class="btn btn-default" id="newuser-submit">Sign-up</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="userNotExistsModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>This username is not recognized, please try again</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="loginFirst" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>Please log-in or signup to add to favorites.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="userExistsModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>This username already exists, please either log-in or use a different username</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="artistExists" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>This artist is already in your favorites.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div id="eventExists" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>This event is already saved to your favorites.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								Favorite Artists
+							</div>
+							<div class="panel-body" id="artist-fav">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								Saved Events
+							</div>
+							<div class="panel-body" id="event-fav">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-12">
+							<div class="artist-container">
+								<div class = "row">
+									<div class="col-md-4">
+										<div class="panel panel-default">
+											<div class="panel-body" id="artist-pic">
+												<img id="artist-picture" class="img-responsive" src="images/napster.gif">
+											</div>
+											<div class="panel-footer" id="artist-button">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="panel panel-success">
+											<div class="panel-heading" id="artist-heading">
+												<h2>Choose an artist to see their information.</h2>
+											</div>
+											<div class="panel-body" id="artist-info">
+											</div>
+											<div class="panel-footer">
+												<h4 id="music-heading">Music Sample</h4>
+													<div id="audioDiv">
+													</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					</div>
+					<div class="col-md-12">
+						<div class="panel panel-info" id="event-info">
+							<div class="panel-body">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="navbar-fixed-bottom">
+		<p>&copy; 2017 Jackie Nguyen, James Scott, Chanel Maddox, &amp; Chris Lynam</p>
+	</footer>
+
+	
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelement-and-player.min.js"></script>
+	<script type="text/javascript" src="javascript/main.js"></script>
+	<script type="text/javascript" src="javascript/artist.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB75T9lTbIQgbY0ahuwPOqmxe1pH3PYSZo"></script>
+
+
+</body>
+</html>
