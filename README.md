@@ -13,6 +13,6 @@
 To use this application, you can either just search for artist name and zip code combination or, to save favorite artists or concerts, you can log in or create an account. Artist information includes photo, bio, genre list, and sample of their music. Event information includes artist/event name, venue, location, and a link to purchase tickets.
 
 
-![Website Image](https://sunkstingray.github.io/NapsterVents/assets/images/napster-vents.gif)
+![Website Image](https://sunkstingray.github.io/NapsterVents/images/napster-vents.gif)
 
 https://sunkstingray.github.io/NapsterVents/
